@@ -41,3 +41,7 @@ jobs:
       - run: npm ci
       
       - run: npx eyes-storybook
+      
+      - name: curl
+          run: curl -L -d '' -X POST "eyesapi.applitools.com/api/externals/github/push?
+apiKey=$APPLITOOLS_API_KEY&CommitSha=$GITHUB_SHA
