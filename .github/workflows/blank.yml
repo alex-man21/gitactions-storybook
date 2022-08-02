@@ -40,10 +40,4 @@ jobs:
 
       - run: npm ci
       
-      - run: npx eyes-storybook
-
-      - name: curl
-        uses: wei/curl@master
-        with:
-          args: -d "" -X POST https://eyesapi.applitools.com/api/externals/github/servers/github.com/commit/${{ env.APPLITOOLS_BATCH_ID }}/complete?apiKey=${{ secrets.APPLITOOLS_API_KEY }}
-
+      - run: env.APPLITOOLS_BATCH_ID npx eyes-storybook
