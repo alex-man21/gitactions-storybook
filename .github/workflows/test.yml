@@ -40,4 +40,4 @@ jobs:
 
       - run: npm ci
       
-      - run: env.APPLITOOLS_BATCH_ID npx eyes-storybook
+      - run: npx eyes-storybook
