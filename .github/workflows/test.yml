@@ -23,7 +23,7 @@ env:
   APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   # APPLITOOLS_BATCH_ID: ${{ github.sha }}
   APPLITOOLS_BATCH_ID: ${{ github.ref_name == 'main' && github.sha || github.event.pull_Request.head.sha }} 
-  
+    
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test:
@@ -47,7 +47,9 @@ jobs:
         #   APPLITOOLS_BRANCH_NAME: ${{ }}
         run: echo "$GITHUB_SHA" \
           echo $APPLITOOLS_BATCH_ID \
-          echo ${{ github.event.repository.name }}
+          echo ${{ github.event.repository }} \
+          echo ${{ github.ref_name }} \
+
 
       - run: npm ci
       
