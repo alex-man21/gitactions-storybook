@@ -42,15 +42,21 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       - name: Log Git SHA
-        if: github.ref.name == 'main' && github.event == 'push'
+        if: github.ref.name == 'main' && github.event_name == 'push'
         env:
           APPLITOOLS_BRANCH_NAME: ${{ github.repository }} + "/" + ${{ github.ref_name}}
         run: echo "$GITHUB_SHA" \
           echo $APPLITOOLS_BATCH_ID \
           echo ${{ github.repository }} \
-          echo ${{ github.ref_name }}
+          echo ${{ github.ref_name }} \
+          echo ${{ github.event}}
 
 
       - run: npm ci
       
-      - run: npx eyes-storybook
+      - name: Tests
+        if: github.ref.name == 'main' && github.event_name == 'push'
+        env:
+          APPLITOOLS_BRANCH_NAME: ${{ github.repository }} + "/" + ${{ github.ref_name}}
+        run: echo $APPLITOOLS_BRANCH_NAME \ 
+          npx eyes-storybook
