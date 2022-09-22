@@ -42,9 +42,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       - name: Log Git SHA
-        # if: github.ref.name == 'main'
-        # env:
-        #   APPLITOOLS_BRANCH_NAME: ${{ }}
+        if: github.ref.name == 'main' && github.event == 'push'
+        env:
+          APPLITOOLS_BRANCH_NAME: ${{ github.repository }} + "/" + ${{ github.ref_name}}
         run: echo "$GITHUB_SHA" \
           echo $APPLITOOLS_BATCH_ID \
           echo ${{ github.repository }} \
