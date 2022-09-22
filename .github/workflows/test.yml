@@ -58,7 +58,9 @@ jobs:
         if: github.event_name == 'push'
         env:
           APPLITOOLS_BRANCH_NAME: "${{ github.repository }}/${{ github.ref_name }}"
-        run: echo "${{ github.repository }}/${{ github.ref_name }}" >> $APPLITOOLS_BRANCH_NAME
+        run: |
+          echo $APPLITOOLS_BRANCH_NAME
+        # echo "${{ github.repository }}/${{ github.ref_name }}" >> $APPLITOOLS_BRANCH_NAME
         # run: echo $APPLITOOLS_BRANCH_NAME >> 
 
       
