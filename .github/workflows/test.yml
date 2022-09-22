@@ -55,7 +55,7 @@ jobs:
         run: npm ci
 
       - name: Setting branch name
-        if: github.ref_name == 'gitactions_testing' && github.event_name == 'push'
+        if: github.event_name == 'push'
         env:
           APPLITOOLS_BRANCH_NAME: "${{ github.repository }}/${{ github.ref_name }}"
         run: echo "${{ github.repository }}/${{ github.ref_name }}" >> $APPLITOOLS_BRANCH_NAME
