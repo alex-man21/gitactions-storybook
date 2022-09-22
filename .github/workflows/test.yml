@@ -52,11 +52,13 @@ jobs:
           echo ${{ github.event_name}}
 
 
-      - run: npm ci
+      - name: Install
+        run: npm ci
       
       - name: Tests
         if: github.ref_name == 'gitactions_testing' && github.event_name == 'push'
         env:
-          APPLITOOLS_BRANCH_NAME: ${{ github.repository }} + "/" + ${{ github.ref_name}}
-        run: echo $APPLITOOLS_BRANCH_NAME \ 
+          APPLITOOLS_BRANCH_NAME: "${{ github.repository }}\${{ github.ref_name}}"
+        run: |
+          echo $APPLITOOLS_BRANCH_NAME
           npx eyes-storybook
