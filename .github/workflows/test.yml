@@ -57,9 +57,9 @@ jobs:
 
       - name: Setting branch name
         if: github.ref_name == 'gitactions_testing' && github.event_name == 'push'
-          run: echo "${{ github.repository }}/${{ github.ref_name }}" >> $APPLITOOLS_BRANCH_NAME
-        # env:
-        #   APPLITOOLS_BRANCH_NAME: "${{ github.repository }}${{ github.ref_name}}"
+        # run: echo "${{ github.repository }}/${{ github.ref_name }}" >> $APPLITOOLS_BRANCH_NAME
+        env:
+          APPLITOOLS_BRANCH_NAME: "${{ github.repository }}/${{ github.ref_name }}"
 
       
       - name: Tests
