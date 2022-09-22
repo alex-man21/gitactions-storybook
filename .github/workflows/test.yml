@@ -47,8 +47,8 @@ jobs:
         #   APPLITOOLS_BRANCH_NAME: ${{ }}
         run: echo "$GITHUB_SHA" \
           echo $APPLITOOLS_BATCH_ID \
-          echo ${{ github.event.repository }} \
-          echo ${{ github.ref_name }} \
+          echo ${{ github.repository }} \
+          echo ${{ github.ref_name }}
 
 
       - run: npm ci
