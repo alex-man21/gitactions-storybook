@@ -14,16 +14,16 @@ name: CI
 #   workflow_dispatch:
 on:
   push:
-    branches: [master, main, test4]
+    branches: [master, main, gitactions_testing, gitactions_testing2]
   pull_request:
-    branches: [master, main]
+    branches: [master, main, gitactions_testing]
   workflow_dispatch:
 
 env:
   APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-  # APPLITOOLS_BATCH_ID: ${{ github.sha }}
   APPLITOOLS_BATCH_ID: ${{ github.ref_name == 'main' && github.sha || github.event.pull_Request.head.sha }} 
-    
+  APPLITOOLS_BRANCH_NAME: ${{ github.repository }}/${{ github.head_ref || github.ref_name}}
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test:
@@ -42,21 +42,33 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       - name: Log Git SHA
-        if: github.ref.name == 'main' && github.event_name == 'push'
-        env:
-          APPLITOOLS_BRANCH_NAME: ${{ github.repository }} + "/" + ${{ github.ref_name}}
+        # if: github.ref.name == 'main' && github.event_name == 'push'
+        # env:
+        #   APPLITOOLS_BRANCH_NAME: ${{ github.repository }} + "/" + ${{ github.ref_name}}
         run: echo "$GITHUB_SHA" \
           echo $APPLITOOLS_BATCH_ID \
           echo ${{ github.repository }} \
           echo ${{ github.ref_name }} \
-          echo ${{ github.event}}
+          echo ${{ github.event_name}}
 
 
-      - run: npm ci
+      - name: Install
+        run: npm ci
+
+      # - name: Setting branch name
+      #   if: github.event_name == 'push'
+      #   env:
+      #     APPLITOOLS_BRANCH_NAME: "${{ github.repository }}/${{ github.ref_name }}"
+      #   run: |
+      #     echo $APPLITOOLS_BRANCH_NAME
+      #   # echo "${{ github.repository }}/${{ github.ref_name }}" >> $APPLITOOLS_BRANCH_NAME
+      #   # run: echo $APPLITOOLS_BRANCH_NAME >> 
+
       
       - name: Tests
-        if: github.ref.name == 'main' && github.event_name == 'push'
-        env:
-          APPLITOOLS_BRANCH_NAME: ${{ github.repository }} + "/" + ${{ github.ref_name}}
-        run: echo $APPLITOOLS_BRANCH_NAME \ 
+        # if: github.ref_name == 'gitactions_testing2' && github.event_name == 'push'
+        # env:
+        #   APPLITOOLS_BRANCH_NAME: "${{ github.repository }}/${{ github.ref_name }}"
+        run: |
+          echo $APPLITOOLS_BRANCH_NAME
           npx eyes-storybook
