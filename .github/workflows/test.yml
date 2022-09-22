@@ -14,9 +14,9 @@ name: CI
 #   workflow_dispatch:
 on:
   push:
-    branches: [master, main, test4]
+    branches: [master, main, gitactions_testing]
   pull_request:
-    branches: [master, main]
+    branches: [master, main, gitactions_testing]
   workflow_dispatch:
 
 env:
@@ -42,9 +42,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       - name: Log Git SHA
-        if: github.ref.name == 'main' && github.event_name == 'push'
-        env:
-          APPLITOOLS_BRANCH_NAME: ${{ github.repository }} + "/" + ${{ github.ref_name}}
+        # if: github.ref.name == 'main' && github.event_name == 'push'
+        # env:
+        #   APPLITOOLS_BRANCH_NAME: ${{ github.repository }} + "/" + ${{ github.ref_name}}
         run: echo "$GITHUB_SHA" \
           echo $APPLITOOLS_BATCH_ID \
           echo ${{ github.repository }} \
