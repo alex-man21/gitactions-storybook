@@ -1,3 +1,7 @@
+# GITACTIONS + APPLTIOOLS MASTER GUIDE
+
+https://github.com/chemerson/applitools-github-integration/blob/main/.github/workflows/applitools.yml
+
 # Applitools Tutorial - Storybook React
 
 This project is to test the integration with GitActions

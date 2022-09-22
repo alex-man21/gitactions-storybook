@@ -14,7 +14,7 @@ name: CI
 #   workflow_dispatch:
 on:
   push:
-    branches: [master, main, gitactions_testing]
+    branches: [master, main, gitactions_testing, gitactions_testing2]
   pull_request:
     branches: [master, main, gitactions_testing]
   workflow_dispatch:
@@ -65,6 +65,9 @@ jobs:
 
       
       - name: Tests
+        # if: github.ref_name == 'gitactions_testing2' && github.event_name == 'push'
+        # env:
+        #   APPLITOOLS_BRANCH_NAME: "${{ github.repository }}/${{ github.ref_name }}"
         run: |
           echo $APPLITOOLS_BRANCH_NAME
           npx eyes-storybook
