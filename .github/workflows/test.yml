@@ -14,9 +14,9 @@ name: CI
 #   workflow_dispatch:
 on:
   push:
-    branches: [master, main, gitactions_testing, gitactions_testing2]
+    branches: [master, main, telus]
   pull_request:
-    branches: [master, main, gitactions_testing]
+    branches: [master, main, telus]
   workflow_dispatch:
 
 env:
