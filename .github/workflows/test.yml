@@ -15,8 +15,8 @@ concurrency:
 
 env:
   APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-  # APPLITOOLS_BATCH_ID: ${{ github.sha }}
   GITHUB_EVENT: ${{ github.event_name }}
+  APPLITOOLS_SERVER_URL : "https://eyesapi.applitools.com"
   APPLITOOLS_BATCH_ID: ${{ github.event.pull_request.head.sha || github.sha }}
   # APPLITOOLS_BRANCH: ${{ github.repository }}/${{ github.head_ref || github.ref_name}}    
 
@@ -48,7 +48,7 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: wei/curl@v1
         with:
-          args: -L -d -v '' -X POST "${{env.APPLITOOLS_SERVER_URL}}/api/Externals/github/push?apiKey=$${{secrets.APPLITOOLS_API_KEY_DEMO_1}}&CommitSha=${{ env.APPLITOOLS_BATCH_ID }}&BranchName=${{ env.APPLITOOLS_BRANCH }}"
+          args: -L -d -v '' -X POST "${{env.APPLITOOLS_SERVER_URL}}/api/Externals/github/push?apiKey=${{ env.APPLITOOLS_API_KEY }}&CommitSha=${{ env.APPLITOOLS_BATCH_ID }}&BranchName=${{ github.repository }}/${{ github.head_ref || github.ref_name}}"
 
 
 
