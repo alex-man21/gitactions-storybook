@@ -45,9 +45,9 @@ jobs:
           echo ${{ github.event_name}} \
 
 
-      # - name: Notify Applitools
-      #   if: github.event_name != 'pull_request'
-      #   run: curl -L -d '' -X POST "${{env.APPLITOOLS_SERVER_URL}}/api/Externals/github/push?apiKey=${{ env.APPLITOOLS_API_KEY }}&CommitSha=${{ env.APPLITOOLS_BATCH_ID }}&BranchName=${{ github.repository }}/${{ github.head_ref || github.ref_name}}"
+      - name: Notify Applitools
+        if: github.event_name != 'pull_request'
+        run: curl -L -d '' -X POST "${{env.APPLITOOLS_SERVER_URL}}/api/Externals/github/push?apiKey=${{ env.APPLITOOLS_API_KEY }}&CommitSha=${{ env.APPLITOOLS_BATCH_ID }}&BranchName=${{ github.repository }}/${{ github.head_ref || github.ref_name}}"
 
 
       - name: Install
