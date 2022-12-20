@@ -56,4 +56,5 @@ jobs:
       - name: Tests
         run: |
           echo $APPLITOOLS_BRANCH_NAME
+          echo "autodesk"
           npx eyes-storybook
