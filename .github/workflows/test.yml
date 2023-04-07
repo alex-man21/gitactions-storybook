@@ -15,7 +15,7 @@ concurrency:
 env:
   APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   GITHUB_EVENT: ${{ github.event_name }}
-  # APPLITOOLS_SERVER_URL : "https://eyesapi.applitools.com"
+  APPLITOOLS_SERVER_URL : "https://eyesapi.applitools.com"
   APPLITOOLS_BATCH_ID: ${{ github.event.pull_request.head.sha || github.sha }}
   # APPLITOOLS_BRANCH: ${{ github.repository }}/${{ github.head_ref || github.ref_name}}    
 
@@ -50,8 +50,7 @@ jobs:
 
 
       - name: Install
-        run: npm i \
-          npm ci
+        run: npm i 
 
       - name: Tests
         run: |
