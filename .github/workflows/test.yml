@@ -4,9 +4,9 @@ on:
   # schedule: # runs pipeline every 15 minutes
   #   - cron:  '15 * * * *'       
   push:
-    branches: [main]
+    # branches: [main] # no restrictions means that the pipeline will run on all events
   pull_request:
-    branches: [main]
+    # branches: [main]
   workflow_dispatch:
 
 concurrency:
