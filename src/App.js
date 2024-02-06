@@ -18,6 +18,7 @@ class App extends Component {
             rel="noopener noreferrer"
           >
             Learn Reacts in a totally new way!
+            Third times the charm :D
           </a>
         </header>
       </div>
