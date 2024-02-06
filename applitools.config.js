@@ -9,9 +9,10 @@ module.exports = {
   ],
   apiKey: process.env.APPLITOOLS_API_KEY,
   batchId: process.env.APPLITOOLS_BATCH_ID,
-  batchName: `${process.env.GITHUB_EVENT} gitactions_storybook: ${process.env.APPLITOOLS_BATCH_ID}`
-  // visualGridOptions: {
-  //   polyfillAdoptedStyleSheets: true,
-  //   ieV2: true    
-  // }
+  batchName: `${process.env.GITHUB_EVENT} gitactions_storybook: ${process.env.APPLITOOLS_BATCH_ID}`,
+  visualGridOptions: {
+    polyfillAdoptedStyleSheets: true,
+    ieV2: true    
+  }
+
 }
