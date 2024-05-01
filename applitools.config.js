@@ -1,4 +1,4 @@
-if (!process.env.APPLITOOLS_BRANCH_NAME) APPLITOOLS_BRANCH_NAME = process.env.APPLITOOLS_BRANCH_NAME;
+// if (!process.env.APPLITOOLS_BRANCH_NAME) APPLITOOLS_BRANCH_NAME = process.env.APPLITOOLS_BRANCH_NAME;
 
 module.exports = {
   concurrency: 2,
