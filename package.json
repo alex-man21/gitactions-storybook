@@ -13,7 +13,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "test": "npx eyes-storybook"
+    "test": "npx eyes-storybook -p 9009"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -25,7 +25,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@applitools/eyes-storybook": "3.29.3",
+    "@applitools/eyes-storybook": "3.63.10",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
     "@storybook/addons": "^6.3.8",
